@@ -1,0 +1,26 @@
+{% extends 'app/layout.html' %}
+
+{% block header %}
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('/static/app/img/food.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>음식 추천</h1>
+            <span class="subheading">랜덤으로 음식 사진 나오는 페이지</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <img src="https://source.unsplash.com/collection/8230069/800x600">
+    </div>
+</div>
+{% endblock %}

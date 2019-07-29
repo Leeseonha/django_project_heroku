@@ -1,0 +1,63 @@
+{% extends 'app/layout.html' %}
+
+{% block header %}
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('/static/app/img/food.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">
+          <h1>음식 추천</h1>
+          <span class="subheading">어딜 가도 존재하는 결정장애 !!</span>
+          <span class="subheading">음식 빠르게 정하자 !!</span>
+          <span class="subheading">랜덤으로 음식을 정해보자 !!</span>
+          <br>
+          <a href="{% url 'random' %}" class="badge badge-success"><span class="subheading">랜덤 음식 추천</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+{% endblock %}
+
+{% block content %}
+<!-- Main Content -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <!-- Searcher -->
+        <div class="dropdown">
+            <button class="btn btn-primary float-right dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Hashtag 검색
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              {% for hashtag in hashtags.all %}
+              <a class="dropdown-item" href="{% url 'search' hashtag.id %}">{{ hashtag.name }}</a>
+              {% endfor %}
+            </div>
+          </div>
+          <br><br>
+      {% for blog in blogs.all %}
+      <div class="post-preview">
+        <a href="{% url 'detail' blog.id %}">
+          <h2 class="post-title">
+            {{ blog.title }}
+          </h2>
+          <h3 class="post-subtitle">
+            {{ blog.summary }}
+          </h3>
+        </a>
+        <p class="post-meta">
+          {{ blog.pub_date }}</p>
+      </div>
+      <hr>
+      {% endfor %}
+      <!-- Pager -->
+      <div class="clearfix">
+        <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
